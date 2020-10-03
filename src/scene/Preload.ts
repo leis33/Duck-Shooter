@@ -10,11 +10,15 @@ class Preload extends Phaser.Scene {
         let height: number = this.cameras.main.height;
 
         this.loadingText = this.add.text(width / 2, height / 2, "Loading", {font: "40px Colibri", fill: "black"});
+        this.loadingText.setOrigin(0.5);
         this.add.existing(this.loadingText);
 
+        //images
         this.load.image("background", "assets/background.png");
-        this.load.image("logo", "assets/logo.png");
+        this.load.atlas("images", "assets/images.png", "assets/images.json");
+        this.load.image("hmm", "assets/hmm screen.png");
 
+        //load code
         this.load.on("load", this.onFileLoaded, this);
         this.load.on("complete", this.onComplete, this);
 
