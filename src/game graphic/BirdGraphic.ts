@@ -10,6 +10,9 @@ class BirdGraphic extends Phaser.GameObjects.Container {
     private readonly maxMoveSpeed: number = 9;
     private readonly minMoveSpeed: number = 4;
 
+    private score: number = 0;
+    private _scoreText: string = "";
+
     private timer: Phaser.Time.TimerEvent;
     constructor(scene: Phaser.Scene) {
         super(scene);
@@ -32,11 +35,11 @@ class BirdGraphic extends Phaser.GameObjects.Container {
     
     private spawnObject(): void {
         if (Math.random() > this.spawnThreshold) {
-            //TODO: implement rare bird here
+            this.spawnRareBird();
         }
         else this.spawnBird();
     }
-
+    
     private spawnBird(): void {
         let x: number = -100;
         let y: number = Math.round(Math.random() * <number>GameApp.gameConfig.height);
@@ -45,9 +48,43 @@ class BirdGraphic extends Phaser.GameObjects.Container {
         } else if (y < this.minHeigthSpawn) {
             y = this.minHeigthSpawn;
         }
-        let bird: Bird = new Bird(this.scene, x, y);
+        let bird: Bird = new Bird(this.scene, x, y, "images", "bird");
         bird.movementSpeed = Math.random() * (this.maxMoveSpeed - this.minMoveSpeed) + this.minMoveSpeed;
+        
+        bird.setInteractive();
+        bird.addListener("pointerdown", () => {
+            bird.destroy();
+            this.score += 25;
+            this._scoreText = this.score.toString();
+        });
+        
         this.add(bird);
+    }
+    
+    private spawnRareBird(): void {
+        let x: number = -100;
+        let y: number = Math.round(Math.random() * <number>GameApp.gameConfig.height);
+        if (y > this.maxHeightSpawn) {
+            y = this.maxHeightSpawn;
+        } else if (y < this.minHeigthSpawn) {
+            y = this.minHeigthSpawn;
+        }
+        let bird: Bird = new Bird(this.scene, x, y, "rareBird");
+        bird.movementSpeed = Math.random() * (this.maxMoveSpeed - this.minMoveSpeed) + this.minMoveSpeed;
+        bird.setScale(0.3);
+        
+        bird.setInteractive();
+        bird.addListener("pointerdown", () => {
+            bird.destroy();
+            this.score += 200;
+            this._scoreText = this.score.toString();
+        });
+        
+        this.add(bird);
+    }
+
+    get scoreText(): string {
+        return "Score: " + this._scoreText;
     }
 
     public update(): void {
