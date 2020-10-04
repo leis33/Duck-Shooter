@@ -2,22 +2,19 @@ class MainMenu extends Phaser.Scene {
     private background: Phaser.GameObjects.Sprite;
     private logo: Phaser.GameObjects.Sprite;
     private playBtn: Phaser.GameObjects.Sprite;
-    private playBtnRed: Phaser.GameObjects.Sprite;
     private quitBtn: Phaser.GameObjects.Sprite;
-    private quitBtnRed: Phaser.GameObjects.Sprite;
 
     constructor() {
         super("mainMenu");
     }
 
     create() {
-        this.cameras.main.fadeIn(2000);
+        this.cameras.main.fadeIn(1500);
 
         let width: number = this.cameras.main.width;
         let height: number = this.cameras.main.height;
 
-        this.background = new Phaser.GameObjects.Sprite(this, 0, 0, "background");
-        this.background.setPosition(width / 2, height / 2);
+        this.background = new Phaser.GameObjects.Sprite(this, width / 2, height / 2, "background");
         this.add.existing(this.background);
         
         this.logo = new Phaser.GameObjects.Sprite(this, width / 2, width * 0.15, "images", "logo");
@@ -31,6 +28,9 @@ class MainMenu extends Phaser.Scene {
         this.playBtn.addListener("pointerout", () => {
             this.add.sprite(width / 2, height / 2, "images", "play");
         });
+        this.playBtn.addListener("pointerdown", () => {
+            this.scene.start("main");
+        })
         this.add.existing(this.playBtn);
         
         
@@ -45,10 +45,12 @@ class MainMenu extends Phaser.Scene {
         this.add.existing(this.quitBtn);
         
         this.quitBtn.addListener("pointerdown", () => {
-            this.cameras.main.fadeOut(2000);
+            this.quitBtn.removeInteractive();
+            this.playBtn.removeInteractive();
+            this.cameras.main.fadeOut(1500);
             setTimeout(() => {
             this.scene.start("exit");
-            }, 2000);
+            }, 1500);
         });
     }
 }
