@@ -10,7 +10,7 @@ class Main extends Phaser.Scene {
     }
 
     create() {
-        this.background = new Phaser.GameObjects.Sprite(this, this.cameras.main.width / 2, this.cameras.main.height / 2, "background");
+        this.background = new Phaser.GameObjects.Sprite(this, this.cameras.main.width / 2, this.cameras.main.height / 2, "rosen");
         this.add.existing(this.background);
 
         this.birdGraphic = new BirdGraphic(this);
