@@ -48,7 +48,7 @@ class BirdGraphic extends Phaser.GameObjects.Container {
         } else if (y < this.minHeigthSpawn) {
             y = this.minHeigthSpawn;
         }
-        let bird: Bird = new Bird(this.scene, x, y, "rosen");
+        let bird: Bird = new Bird(this.scene, x, y, "images", "bird");
         bird.movementSpeed = Math.random() * (this.maxMoveSpeed - this.minMoveSpeed) + this.minMoveSpeed;
         bird.setScale(0.2);
         
@@ -70,7 +70,7 @@ class BirdGraphic extends Phaser.GameObjects.Container {
         } else if (y < this.minHeigthSpawn) {
             y = this.minHeigthSpawn;
         }
-        let bird: Bird = new Bird(this.scene, x, y, "rosen");
+        let bird: Bird = new Bird(this.scene, x, y, "rareBird");
         bird.movementSpeed = Math.random() * (this.maxMoveSpeed - this.minMoveSpeed) + this.minMoveSpeed;
         bird.setScale(0.2);
         bird.setTint(0xe30909);
