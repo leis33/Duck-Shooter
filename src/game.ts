@@ -3,6 +3,7 @@ import { Preload } from './scene/Preload';
 import { MainMenu } from './scene/MainMenu';
 import { Exit } from './scene/Exit';
 import { Main } from './scene/Main';
+import { GameOver } from './scene/GameOver';
 
 class GameApp extends Phaser.Game {
     public static gameConfig: Phaser.Types.Core.GameConfig = null;
@@ -17,7 +18,7 @@ class GameApp extends Phaser.Game {
                 backgroundColor: '#a0dadb',
                 width: 1024,
                 height: 768,
-                scene: [Preload, MainMenu, Main, Exit]
+                scene: [Preload, MainMenu, Main, Exit, GameOver]
             };
         }
 

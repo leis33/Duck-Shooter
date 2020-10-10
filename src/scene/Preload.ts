@@ -18,6 +18,7 @@ class Preload extends Phaser.Scene {
         this.load.atlas("images", "assets/images.png", "assets/images.json");
         this.load.image("hmm", "assets/hmm screen.png");
         this.load.image("rareBird", "assets/rare bird.png");
+        this.load.image("gameOver", "assets/gameOver.png");
 
         //load code
         this.load.on("load", this.onFileLoaded, this);
