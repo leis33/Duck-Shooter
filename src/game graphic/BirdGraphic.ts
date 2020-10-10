@@ -14,6 +14,7 @@ class BirdGraphic extends Phaser.GameObjects.Container {
     private _scoreText: string = "";
 
     private timer: Phaser.Time.TimerEvent;
+
     constructor(scene: Phaser.Scene) {
         super(scene);
         

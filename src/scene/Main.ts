@@ -43,6 +43,7 @@ class Main extends Phaser.Scene {
     update() {
         this.birdGraphic.update();
         this.scoreText.text = this.birdGraphic.scoreText;
+        this.registry.set("scoreText", this.scoreText.text);
     }
 }
 

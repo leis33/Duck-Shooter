@@ -1,7 +1,11 @@
+import { BirdGraphic } from "../game graphic/BirdGraphic";
+
 class GameOver extends Phaser.Scene {
     private gameOver: Phaser.GameObjects.Sprite;
     private background: Phaser.GameObjects.Sprite;
     private scoreText: Phaser.GameObjects.Text;
+
+    private birdGraphic: BirdGraphic;
 
     constructor() {
         super("gameover")
@@ -16,7 +20,7 @@ class GameOver extends Phaser.Scene {
 
         this.scoreText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height / 2, "", {font: "60px Cooper Black", fill: "black"});
         this.scoreText.setOrigin(0.5);
-        this.scoreText.text = "";
+        this.scoreText.text = this.registry.get("scoreText");
         this.add.existing(this.scoreText);
     }
 }
