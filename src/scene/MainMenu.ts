@@ -23,10 +23,10 @@ class MainMenu extends Phaser.Scene {
         this.playBtn = new Phaser.GameObjects.Sprite(this, width / 2, height / 2, "images", "play");
         this.playBtn.setInteractive();
         this.playBtn.addListener("pointerover", () => {
-            this.add.sprite(width / 2, height / 2, "images", "playR");
+            this.playBtn.setTexture("images", "playR");
         });
         this.playBtn.addListener("pointerout", () => {
-            this.add.sprite(width / 2, height / 2, "images", "play");
+            this.playBtn.setTexture("images", "play");
         });
         this.playBtn.addListener("pointerdown", () => {
             this.scene.start("main");
@@ -37,10 +37,10 @@ class MainMenu extends Phaser.Scene {
         this.quitBtn = new Phaser.GameObjects.Sprite(this, width / 2, height * 0.75, "images", "quit");
         this.quitBtn.setInteractive()
         this.quitBtn.addListener("pointerover", () => {
-            this.add.sprite(width / 2, height * 0.75, "images", "quitR");
+            this.quitBtn.setTexture("images", "quitR");
         });
         this.quitBtn.addListener("pointerout", () => {
-            this.add.sprite(width / 2, height * 0.75, "images", "quit");
+            this.quitBtn.setTexture("images", "quit");
         });
         this.add.existing(this.quitBtn);
         

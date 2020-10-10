@@ -27,9 +27,7 @@ class Preload extends Phaser.Scene {
     }
 
     private onFileLoaded(): void {
-        setInterval(() => {
-            this.loadingText.text += ".";
-        }, 10)
+        this.loadingText.text += "..";
     }
 
     private onComplete(): void {
